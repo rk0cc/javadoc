@@ -73,7 +73,7 @@
 
                     var card = document.createElement("div");
                     card.classList.add("card", "jdoccard", "cyan", "lighten-3");
-                    card.appendChild(cardContent(jdocProp.group, jdocProp.artifact));
+                    card.appendChild(cardContent(jdocProp.group, jdocProp.artifact, jdocProp.versions.latest));
                     card.appendChild(cardAction);
 
                     return card;
