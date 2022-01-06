@@ -66,10 +66,14 @@
                     cardAction.classList.add("card-action", "cyan", "lighten-1");
                     cardAction.appendChild(makeLink("Documents", "./" + jdocProp.group + "/" + jdocProp.artifact));
                     cardAction.appendChild(makeLink("Repository", jdocProp.source));
+                    
+                    var lR = document.createElement("p");
+                    lR.appendChild(document.createTextNode("Latest release version: " + jdocProp.latest));
 
                     var card = document.createElement("div");
                     card.classList.add("card", "jdoccard", "cyan", "lighten-3");
                     card.appendChild(cardContent(jdocProp.group, jdocProp.artifact));
+                    card.appendChild(lR);
                     card.appendChild(cardAction);
 
                     return card;
