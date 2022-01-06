@@ -42,14 +42,18 @@
                 }
 
                 function buildJavadocCard(jdocProp) {
-                    function cardContent(jdocgp, jdocart) {
+                    function cardContent(jdocgp, jdocart, jdoclv) {
                         var title = document.createElement("span");
                         title.classList.add("card-title");
                         title.appendChild(document.createTextNode("xyz.rk0cc." + jdocgp + ":" + jdocart));
+                        
+                        var lR = document.createElement("p");
+                        lR.appendChild(document.createTextNode("Latest release version: " + jdoclv));
 
                         var cardCtx = document.createElement("div");
                         cardCtx.classList.add("card-content");
                         cardCtx.appendChild(title);
+                        cardCtx.appendChild(lR);
 
                         return cardCtx;
                     }
@@ -66,14 +70,10 @@
                     cardAction.classList.add("card-action", "cyan", "lighten-1");
                     cardAction.appendChild(makeLink("Documents", "./" + jdocProp.group + "/" + jdocProp.artifact));
                     cardAction.appendChild(makeLink("Repository", jdocProp.source));
-                    
-                    var lR = document.createElement("p");
-                    lR.appendChild(document.createTextNode("Latest release version: " + jdocProp.latest));
 
                     var card = document.createElement("div");
                     card.classList.add("card", "jdoccard", "cyan", "lighten-3");
                     card.appendChild(cardContent(jdocProp.group, jdocProp.artifact));
-                    card.appendChild(lR);
                     card.appendChild(cardAction);
 
                     return card;
