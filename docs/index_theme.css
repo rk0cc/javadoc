@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://www.rk0cc.xyz/css/colour_scheme.css");
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+body > header > nav > div.nav-wrapper {
+    background-color: var(--rk0cc-theme-light-1);
+}

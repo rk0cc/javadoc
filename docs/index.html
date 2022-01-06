@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="List all Java package documentation which owned by rk0cc and published to Maven Central repository already."/>
+        <meta name="keywords" content="Javadoc, Java, Oracle, RedHat, AdoptJDK, JDK, JRE, JOGU, JOSEV, pub, npm, semver, semantic versioning, xyz.rk0cc, Maven, GitHub, jogu, josev-core, josev-pub, josev-npm, Maven central, rk0cc, Jar, Git protocol, Git URL, Git, SSH, HTTPS, alternative SSH"/>
+        <meta name="author" content="Cyrus Chan (rk0cc)"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>rk0cc Javadoc library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="index_theme.css" />
+        <style>
+            main > div.container > div.row > div[rk0cc-javadoc-placeholder].col.s12 > div.card.jdoccard {
+                margin-top: 3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a class="brand-logo center">rk0cc Javadoc library</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12" rk0cc-javadoc-placeholder></div>
+                </div>
+            </div>
+        </main>
+        <script>
+            ((window, document) => {
+                const cardContainer = document.body.querySelector("main > div.container > div.row > div[rk0cc-javadoc-placeholder].col.s12");
+
+                async function loadJDocDir() {
+                    return await fetch("https://osp.rk0cc.xyz/javadoc/dir.min.json", {
+                        method: "GET",
+                        redirect: "follow"
+                    }).then(resp => resp.json());
+                }
+
+                function buildJavadocCard(jdocProp) {
+                    function cardContent(jdocgp, jdocart) {
+                        var title = document.createElement("span");
+                        title.classList.add("card-title");
+                        title.appendChild(document.createTextNode("xyz.rk0cc." + jdocgp + ":" + jdocart));
+
+                        var cardCtx = document.createElement("div");
+                        cardCtx.classList.add("card-content");
+                        cardCtx.appendChild(title);
+
+                        return cardCtx;
+                    }
+
+                    function makeLink(label, link) {
+                        var ln = document.createElement("a");
+                        ln.href = link;
+                        ln.classList.add("cyan-text", "text-darken-4")
+                        ln.appendChild(document.createTextNode(label));
+                        return ln;
+                    }
+
+                    var cardAction = document.createElement("div");
+                    cardAction.classList.add("card-action", "cyan", "lighten-1");
+                    cardAction.appendChild(makeLink("Documents", "./" + jdocProp.group + "/" + jdocProp.artifact));
+                    cardAction.appendChild(makeLink("Repository", jdocProp.source));
+
+                    var card = document.createElement("div");
+                    card.classList.add("card", "jdoccard", "cyan", "lighten-3");
+                    card.appendChild(cardContent(jdocProp.group, jdocProp.artifact));
+                    card.appendChild(cardAction);
+
+                    return card;
+                }
+
+                loadJDocDir()
+                    .then((jdoc) => {
+                        for (const jdoclib of jdoc) cardContainer.appendChild(buildJavadocCard(jdoclib));
+                    });
+            })(window, document);
+        </script>
+    </body>
+</html>
