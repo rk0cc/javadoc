@@ -3,7 +3,6 @@
         {
             "fileMatch": [
                 "/docs/dir.json",
-                "/docs/dir.min.json"
             ],
             "url": ".vscode/dir-schema.json"
         }

@@ -1,7 +1,7 @@
 "use strict";
 ((document) => {
     async function loadJDocDir() {
-        return await fetch("https://osp.rk0cc.xyz/javadoc/dir.min.json", {
+        return await fetch("https://osp.rk0cc.xyz/javadoc/dir.json", {
             method: "GET",
             redirect: "follow"
         }).then(resp => resp.json());
