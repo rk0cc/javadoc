@@ -15,8 +15,9 @@
         "group": "josev",
         "artifact": "josev-core",
         "versions": {
-            "latest": "2.0.0",
+            "latest": "2.0.1",
             "released": [
+                "2.0.1",
                 "2.0.0",
                 "1.0.1"
             ]
