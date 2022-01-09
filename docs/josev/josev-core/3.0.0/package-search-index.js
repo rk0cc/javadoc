@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"xyz.rk0cc.josev"},{"l":"xyz.rk0cc.josev.collections"},{"l":"xyz.rk0cc.josev.constraint"}];updateSearchResults();
