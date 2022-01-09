@@ -29,8 +29,9 @@
         "group": "josev",
         "artifact": "josev-pub",
         "versions": {
-            "latest": "2.0.0",
+            "latest": "3.0.0",
             "released": [
+                "3.0.0",
                 "2.0.0",
                 "1.0.1"
             ]
